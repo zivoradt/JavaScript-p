@@ -7,7 +7,9 @@
 
     function Start()
     {
-        console.log("App started!"); 
+        //local variable
+        var title = document.title;
+        console.log("Title: " + title); 
     }
 
     window.onload = Start;
