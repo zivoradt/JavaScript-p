@@ -8,7 +8,22 @@
     function Start()
     {
         //local variable
-        var title = document.title;
+        let title = document.title;
+
+        switch (title) {
+            case "Home":
+                let AboutButton = document.getElementById("AboutButton");
+
+        AboutButton.addEventListener("click", function(){
+            console.log("ABout Button was clicked");
+        });
+                
+                break;
+        
+            default:
+                break;
+        }
+
         console.log("Title: " + title); 
     }
 
