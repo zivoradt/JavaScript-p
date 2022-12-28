@@ -2,8 +2,10 @@
 
 // IIFE - Imediately Invoked Funktion Expression
 
-(function () {
+let app = (function () {
     "use strict"
+
+    
 
     // About event hendler
     function AboutButtonClick() {
@@ -41,6 +43,66 @@
 
         paragraph.textContent = sentence;
 
+        let myArray = [
+            {name: "Tom", age: 25},
+            {name: "zom", age: 26},
+            {name: "Tomm", age: 4},
+            {name: "Toom", age: 25},
+        ];
+
+        myArray.push( {name: "TTTToom", age: 2522});
+        myArray.unshift( {name: "Zile ", age: 25})
+
+        let arrayEmpty = (myArray.length > 0) ? false : true;
+
+        let myAssociate = [];
+
+        myAssociate["Name"] = "tom";
+        myAssociate["age"] = 30;
+        myAssociate["student"] = "P3034";
+
+        console.log(myAssociate);
+
+        for (const key in myAssociate) {
+            var item = myAssociate[key];
+            console.log(item);
+            
+        }
+
+        /*
+        for(const person of myArray)
+        {
+            console.log(person.name);
+        } */
+
+
+        /*
+        for (const index in myArray) {
+            console.log(myArray[index].name);
+        } */
+
+
+        /*
+        myArray.forEach(function(person){
+            console.log(person.name)
+        }); */
+
+        /*
+        myArray.forEach(element => {
+            console.log(element.name)
+        });
+        */
+
+        /*
+        for (let index = 0; index < myArray.length; index++) {
+            console.log(myArray[index].name);
+            
+        } */
+
+        let content = document.getElementsByClassName("content");
+        console.log("Size of array is: " + myArray.length);
+
+
     }
 
 
@@ -62,7 +124,11 @@
         };
     }
 
+    
+
     window.addEventListener("load", Start);
 
-
+    return {
+        title: document.title
+    };
 })();
