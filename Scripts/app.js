@@ -34,8 +34,7 @@ let app = (function () {
     }
 
     function AboutPage() {
-        let number = ReturnPi();
-        console.log("This is a PI: " + number);
+        
 
         let paragraph = document.getElementById("paragraph");
 
@@ -85,17 +84,12 @@ let app = (function () {
 
         console.log(myAssociate);
 
-        for (const key in myAssociate) {
-            var item = myAssociate[key];
-            console.log(item);
-
-        }
+        
 
 
+    }
 
-        let content = document.getElementsByClassName("content");
-        console.log("Size of array is: " + myArray.length);
-
+    function ContactContent() {
 
     }
 
@@ -106,6 +100,8 @@ let app = (function () {
 
         console.log("The page name is: " + title);
 
+        try {
+          
         switch (title) {
             case "Home":
                 HomeContent();
@@ -113,9 +109,19 @@ let app = (function () {
 
             case "About":
                 AboutPage();
-            default:
                 break;
-        };
+
+            case "Contact":
+                ContactContent();
+                break; 
+            default:
+                throw("Title not defined");
+                break;
+        }
+        }
+        catch {
+            console.warn("Something get wrong");
+        }
     }
 
 
