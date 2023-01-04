@@ -1,13 +1,8 @@
 // IIFE - Imediately Invoked Funktion Expression
-
+ 
 let app;
 (function (app) {
     "use strict"
-
-
-    function ContactContent() {
-
-    }
 
 
     function Start() {
@@ -28,7 +23,7 @@ let app;
                 break;
 
             case "Contact":
-                ContactContent();
+                content.ContactContent();
                 break; 
             default:
                 throw("Title not defined");
