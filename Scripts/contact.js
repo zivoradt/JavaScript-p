@@ -1,4 +1,31 @@
-(function (content) {
+((content) => {
+
+    function outputFormData(){
+         let name = document.getElementById("FullName");
+         let email = document.getElementById("EmailAdress");
+         let message = document.getElementById("Message");
+         let contact = document.getElementById("ContactNumber");
+        
+        console.log(`Full name: ${name.value}`);
+        console.log(`Contact number: ${contact.value}`);
+        console.log(`Email: ${email.value}`);
+        console.log(`Message: ${message.value}`);
+        console.log(`Form lenght: ${document.forms[0].length}`);
+        console.log(`Form elements: ${document.forms[0].elements[0]}`);
+
+
+        for (let index = 0; index < document.forms[0].length; index++) {
+            console.log(`%c Element ${index}: ${document.forms[0].elements[index].value}`);
+        }
+            
+        
+
+    };
+ 
+
+
+
+
 
     function ContactContent() {
         
@@ -13,35 +40,18 @@
         cancelButton.textContent = "Cancel";
         cancelButton.addEventListener("click", function (event) {
             event.preventDefault();
-            // window.open("index.html", "_parent");
+             window.open("index.html", "_parent");
         });
 
         // add the HTML element  to page
         document.forms[0].appendChild(cancelButton);
 
-        // Use the history to wipe out the URL
-        history.pushState("", "", "/contact")
-
-        history.back
-
-        // Use location to show my path
-        console.log(location.pathname);
-
-        console.log("User agent: " + navigator.userAgent);
-
-        
-
-        
-
-        let form = document.getElementById('form');
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
-            let username = document.getElementById('FullName').value;
-            let formData = {
-                username: username,
-            };
-            console.log(formData.username);
+        let SubmitButton = document.getElementById("sendButton");
+        SubmitButton.addEventListener("click", (event)=>{
+                event.preventDefault();
+                outputFormData();
         });
+
 
     }
 

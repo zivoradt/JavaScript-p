@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel Scripts -d dist"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,8 @@
   },
   "devDependencies": {
     "@types/bootstrap": "^5.2.6",
-    "@types/jquery": "^3.5.16"
+    "@types/jquery": "^3.5.16",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
   }
 }

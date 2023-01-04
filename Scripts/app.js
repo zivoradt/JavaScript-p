@@ -11,7 +11,7 @@ let app;
 
         console.log("The page name is: " + title);
 
-        try {
+    
           
         switch (title) {
             case "Home":
@@ -28,13 +28,10 @@ let app;
             default:
                 throw("Title not defined");
                 break;
+            }
+        
+        
         }
-        }
-        catch {
-            console.warn("Something get wrong");
-        }
-    }
-
 
 
     window.addEventListener("load", Start);
