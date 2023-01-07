@@ -1,0 +1,10 @@
+/* Your custome CSS goes here */
+
+#mainContent {
+    margin-top: 4em;
+    margin-bottom: 4em;
+}
+
+nav {
+    opacity: 80%;
+}
