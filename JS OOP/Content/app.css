@@ -8,3 +8,12 @@
 nav {
     opacity: 80%;
 }
+
+#result {
+    margin-left: 10px;
+    
+}
+
+.minRangeValue, .maxRangeValue, #result {
+    min-height:  40px;
+}

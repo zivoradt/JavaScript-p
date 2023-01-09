@@ -3,31 +3,30 @@ let core;
 // Core modelu - IIFE
 (function (core) {
   // App variables
-  let person;
-  let student;
 
-  /* OLD WAY
-  let Student = (function() {
-      function Student(name, age, studentID){
-          objects.Person.call(this, name, age)
-          this._ID = studentID
-      }
+  let rollButton;
+  let result;
 
-      //  Extent or inherit from Person class
-      Student.prototype = Object.create(objects.Person);
-
-      Student.prototype.sayHello = objects.Person.sayHello;
-
-      Student.prototype.studies  = function(){
-        console.log(`${this._name} is styding`);
-    }
-
-      return Student;
-  })(); */
+  let minRange;
+  let maxRange;
+  let minRangeValue;
+  let maxRangeValue;
+  let min;
+  let max;
 
 
 
+function radnomRange(min, max){
+  let random;
 
+  random = Math.floor((Math.random() * max)+min); 
+
+  return random;
+}
+
+function addToResult(){
+
+}
 
 
   /**
@@ -39,51 +38,20 @@ let core;
       "font-wheight: bold; font-size: 20px;"
     );
 
-    person = new objects.Person("zivorad", 28);
+  rollButton = document.getElementById("rollButton");
 
-    student = new objects.Student("Milos", 29, 4453);
+  result = document.getElementById("result");
 
-    // myObject = {}; // object literal notation
-    // myObject = new Object(); // Constructor notation
+  minRange = document.getElementById("minRange");
+  maxRange = document.getElementById("maxRange");
 
-    /* Property definition
-        myObject.name = "";
-        myObject.age = 5;
-        */
-    /*
-        // PUBLIC PROPERTIES
-        Object.defineProperty(myObject, "name", {
-            configurable: false,
-            enumerable: false, 
-            get: function() { return this._name;},
-            set: function(newValue) { this._name = newValue;} 
+  minRangeValue = document.getElementById("minRangeValue");
+  maxRangeValue = document.getElementById("maxRangeValue");
 
-        });
-
-        Object.defineProperty(myObject, "age", {
-            configurable: false,
-            enumerable: false, 
-            get: function() { return this._age;},
-            set: function(newValue) { this._age = newValue;} 
-
-        });
-
-        // PRIVATE PROPERTIES
-        Object.defineProperty(myObject, "_name", {
-            configurable: false,
-            enumerable: false, 
-            value: "",
-            writable: true
-
-        });
-
-        Object.defineProperty(myObject, "_age", {
-            configurable: false,
-            enumerable: false, 
-            value: 0,
-            writable: true
-
-        });*/
+  min = 1;
+  max = 6;
+  
+    
 
     Main();
   }
@@ -94,14 +62,29 @@ let core;
 
   function Main() {
     console.log(`%c App Started...`, "font-wheight: bold; font-size: 20px;");
+    let roll;
 
-    console.log(student);
-    console.log(person);
+    result.innerHTML = "0";
+    minRangeValue.innerHTML = min;
+    maxRangeValue.innerHTML = max;
 
-    person.sayHello();
+    rollButton.addEventListener("click", function(){
+      roll = radnomRange(min, max);
+      result.innerHTML = roll;
+      result.style.fontSize = "20px";
+    });
 
-    student.studies();
-    student.sayHello();
+    minRange.addEventListener("input", function () {
+        minRangeValue.innerHTML = minRange.value;
+        min = minRange.value;      
+    });
+    maxRange.addEventListener("input", function () {
+      maxRangeValue.innerHTML = maxRange.value;  
+      max = maxRange.value;       
+  });
+    
+
+
   }
 
   window.addEventListener("load", Start);
