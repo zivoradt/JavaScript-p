@@ -18,8 +18,9 @@ let core;
 
 function radnomRange(min, max){
   let random;
+  let mix = (max-min)+1;
 
-  random = Math.floor((Math.random() * max)+min); 
+  random = Math.floor((Math.random() * mix)+min); 
 
   return random;
 }
@@ -75,12 +76,24 @@ function addToResult(){
     });
 
     minRange.addEventListener("input", function () {
+        
+        min = parseInt(minRange.value);
+        max = parseInt(maxRange.value); 
+        if (min > max) {
+          minRange.value = maxRange.value;
+            min = max;
+        }      
         minRangeValue.innerHTML = minRange.value;
-        min = minRange.value;      
     });
     maxRange.addEventListener("input", function () {
+      max = parseInt(maxRange.value); 
+      min = parseInt(minRange.value);
+      if (max < min) {
+        maxRange.value = minRange.value;
+          max = min;
+      } 
       maxRangeValue.innerHTML = maxRange.value;  
-      max = maxRange.value;       
+          
   });
     
 
