@@ -10,8 +10,9 @@ let core;
   let vec1;
   let vec2;
   let canvas;
-  let context;
-
+  let graphics;
+  let stage;
+  let line;
 
 
   /**
@@ -30,11 +31,23 @@ let core;
     vec2 = new objects.Vector(300,400);
 
     canvas = document.getElementById("canvas");
+
+    stage = new createjs.Stage("canvas");
+    createjs.Ticker.framerate = 60; //60 fps
+    createjs.Ticker.addEventListener("tick", GameLoop);
+
+    graphics = new createjs.Graphics();
+    line = new createjs.Shape(graphics);
   
     
 
     Main();
   };
+
+  function GameLoop(){
+    line.x += 1;
+    stage.update();
+  }
 
   /**
    * This function is where the main functionality for the web app is happening
@@ -51,12 +64,15 @@ let core;
   });
 
   console.log(`Distance: ${objects.Vector.distance(vec1, vec2)}`);
+  graphics.setStrokeStyle(2);
+  graphics.beginStroke("#000000");
 
-  context = canvas.getContext("2d");
-  context.moveTo(vec1.x, vec1.y);
-  context.lineTo(vec2.x, vec2.y);
-  context.stroke();
+  graphics.moveTo(vec1.x, vec1.y);
+  graphics.lineTo(vec2.x, vec2.y);
+  graphics.endStroke();
+  
 
+  stage.addChild(line);
 
 };
   
