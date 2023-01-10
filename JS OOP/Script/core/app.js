@@ -7,6 +7,8 @@ let core;
   let clickMeButton;
   let buttonSection;
   let firstH1;
+  let vec1;
+  let vec2;
 
 
 
@@ -22,7 +24,8 @@ let core;
     buttonSection = document.getElementById("buttonSection");
     firstH1 = document.getElementsByTagName("h1")[0];
 
-  
+    vec1 = new objects.Vector(3,5);
+    vec2 = new objects.Vector(5,10);
   
     
 
@@ -42,6 +45,10 @@ let core;
   clickMeButton.addEventListener("click", function () {
     firstH1.textContent = "Click me button is clicked!";
   });
+
+  console.log(`Distance: ${objects.Vector.distance(vec1, vec2)}`);
+  
+
 
 };
   
