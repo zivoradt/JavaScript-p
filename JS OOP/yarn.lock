@@ -2,6 +2,19 @@
 # yarn lockfile v1
 
 
+"@types/createjs-lib@*":
+  version "0.0.29"
+  resolved "https://registry.yarnpkg.com/@types/createjs-lib/-/createjs-lib-0.0.29.tgz#fae82e3ba8606663b190e789cec7d9c728fc41d7"
+  integrity sha512-SjceOhvNEqweSfWNMT6wu4DsH09X0phnlzCCj5s+VAwLXuTsb8YS+vAmngg+DTuWu75vcF3qFsqxZQ85KZ3/Lw==
+
+"@types/easeljs@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@types/easeljs/-/easeljs-1.0.1.tgz#4537f7201d11c4e24af923667dd895ca5c000b6c"
+  integrity sha512-mu4oIs+2CbN60Vgq8DSt7aXR2I0tV9K2ev/ZIPlkyE5UvQ+xIvw8D3NDB4dnGFkvHN303faYcETIhuvNDm6siQ==
+  dependencies:
+    "@types/createjs-lib" "*"
+    "@types/tweenjs" "*"
+
 "@types/jquery@^3.5.16":
   version "3.5.16"
   resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.5.16.tgz#632131baf30951915b0317d48c98e9890bdf051d"
@@ -9,15 +22,42 @@
   dependencies:
     "@types/sizzle" "*"
 
+"@types/preloadjs@*", "@types/preloadjs@^0.6.32":
+  version "0.6.32"
+  resolved "https://registry.yarnpkg.com/@types/preloadjs/-/preloadjs-0.6.32.tgz#12cff7c7f92e3838a780d438ce49c8cec981830d"
+  integrity sha512-vtrFzX5Aba+CYs/niapnQzk9qmJzXmKraV/Vty/T/HWO+gv3BoyDpV+OoEUS76NRnfRYi1kihE0IujiM7MjCQA==
+  dependencies:
+    "@types/createjs-lib" "*"
+
 "@types/sizzle@*":
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/@types/sizzle/-/sizzle-2.3.3.tgz#ff5e2f1902969d305225a047c8a0fd5c915cebef"
   integrity sha512-JYM8x9EGF163bEyhdJBpR2QX1R5naCJHC8ucJylJ3w9/CVBaskdQ8WqBf8MmQrd1kRvp/a4TS8HJ+bxzR7ZJYQ==
 
+"@types/soundjs@^0.6.28":
+  version "0.6.28"
+  resolved "https://registry.yarnpkg.com/@types/soundjs/-/soundjs-0.6.28.tgz#cf748e90dd78f66c3f54fab41536f60a42c8c002"
+  integrity sha512-K3ktwPvYfQrH+qGEe1tgxC5o4rJC7CVxQmL9Cz9tgVq0oW99PmPfRp1F7YXELibCvV3lieD4E0sUZvnDEKWaPg==
+  dependencies:
+    "@types/createjs-lib" "*"
+    "@types/preloadjs" "*"
+
+"@types/tweenjs@*", "@types/tweenjs@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@types/tweenjs/-/tweenjs-1.0.4.tgz#4e283c7d441aef92d27e24d62628cc82155d53ee"
+  integrity sha512-UnGcZRjGYz2w+2LB/70QkzWjtqOcTu4Nxa/Cy9YZ4I8HU44kcayNgbXZYMQu4ll7z+1GP7r1+viqLKNv7+Mrzw==
+  dependencies:
+    "@types/createjs-lib" "*"
+
 bootstrap@^5.2.3:
   version "5.2.3"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.2.3.tgz#54739f4414de121b9785c5da3c87b37ff008322b"
   integrity sha512-cEKPM+fwb3cT8NzQZYEu4HilJ3anCrWqh3CHAok1p9jXqMPsPTBhU25fBckEJHJ/p+tTxTFTsFQGM+gaHpi3QQ==
+
+easeljs@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/easeljs/-/easeljs-1.0.2.tgz#68fdcc69d0f217394e2ebf51ae047428a81240de"
+  integrity sha512-PQTsiud32vrUIqZCbynjOJjCzoEp0xH+MRusRCdsZ1MzL4LCE2vp4Sa5cr6aShB3mK4vMZ8LFPnts4xuFhjEmg==
 
 font-awesome@^4.7.0:
   version "4.7.0"
@@ -33,3 +73,18 @@ popper.js@^1.16.1:
   version "1.16.1"
   resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
   integrity sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==
+
+preloadjs@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/preloadjs/-/preloadjs-1.0.1.tgz#71d14e94a8c94b1f6def2b01891d6bcd7e788c5d"
+  integrity sha512-XwdxL9bfoq9abJU4lVBJDVgbxWvQOk/BbuwXKEEG5BaduY7S8N1VXX4My5PM/UwW6Xf4uWAvWzwWlzb20uECxQ==
+
+soundjs@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/soundjs/-/soundjs-1.0.1.tgz#99970542d28d0df2a1ebd061ae75c961a98c8180"
+  integrity sha512-MgFPvmKYfpcNiE3X5XybNvScie3DMQlZgmNzUn4puBcpw64f4LqjH/fhM8Sb/eTJ8hK57Crr7mWy0bfJOqPj6Q==
+
+tweenjs@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/tweenjs/-/tweenjs-1.0.2.tgz#768869c4d4ba91fdb4c5ccc661969c58138555af"
+  integrity sha512-WnFozCNkUkmJtLqJyGrToxVojW2Srzudktr8BzFKQijQRVcmlq7Fc+qfo75ccnwIJGiRWbXKfg7qU67Tzbb1bg==
