@@ -1,4 +1,4 @@
-// IIFE - Imediately Invoked Funktion Expression
+
  
 let app;
 (function (app) {
