@@ -6,29 +6,12 @@
 
 "use strict";
 
-let myDocument = $(function(){
-  return {
-    "myVariable": 10
-  }
-});
 
-console.log(myDocument);
 
 ((core)=>
 {
     function displayHome()
     {
-
-       $("button").on("click", ()=>{
-        console.log("h1 clicked");
-      });
-      let a1 = document.querySelectorAll("button")[0];
-      
-      a1.addEventListener("click", ()=>{
-        console.log("h1 clicked");
-      });
-      
-      console.log(a1);
 
 
 
@@ -99,36 +82,39 @@ console.log(myDocument);
 
     function displayContact()
     {
-        let messageArea = document.getElementById("messageArea");
-        messageArea.hidden = true;
+
+
+        let messageAre = $("#messageArea").hide();
 
         // form validation
-        let fullName = document.getElementById("fullName");
-        fullName.addEventListener("blur", function() {
-            if(fullName.value.length < 2)
-            {
-                fullName.focus();
-                fullName.select();
-                messageArea.hidden = false;
-                messageArea.className = "alert alert-danger";
-                messageArea.textContent = "Please enter an appropriate Name";
-            }
-            else
-            {
-                messageArea.removeAttribute("class");
-                messageArea.hidden = true;
-            }
-        });
 
-        let sendButton = document.getElementById("sendButton");
-        sendButton.addEventListener("click", function(event){
-            event.preventDefault();
-            
-            let contact = new core.Contact(fullName.value, contactNumber.value, emailAddress.value);
+        $("#fullName").on("blur", function(){
+          if($(this).val().length < 2)
+          {
+              $(this).trigger("focus").trigger("select");
+
+              messageAre.show().addClass("alert alert-danger").text("Please enter an appropriate Name");
+          }
+          else
+          {
+            messageAre.removeAttr("class").hide();
+          }
+        });
+        
+        $("#sendButton").on("click", ()=>{
+
+          let contact = new core.Contact(fullName.value, contactNumber.value, emailAddress.value);
 
               if (contact.serialize()) {
                 localStorage.setItem((localStorage.length+1).toString(), contact.serialize());
               }
+
+        });
+        let sendButton = document.getElementById("sendButton");
+        sendButton.addEventListener("click", function(event){
+            event.preventDefault();
+            
+            
             
             
                       
