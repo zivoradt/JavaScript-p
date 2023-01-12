@@ -1,6 +1,10 @@
 "use strict";
 // Contact Class
-class Contact {
+
+
+((core)=>{
+
+  class Contact {
     // getters and setters
     get FullName() 
     {
@@ -101,3 +105,6 @@ class Contact {
 
     }
   }
+  core.Contact = Contact;
+
+})(core || (core = {}));
