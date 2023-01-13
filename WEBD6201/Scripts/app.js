@@ -6,6 +6,8 @@
 
 "use strict";
 
+//const { Button } = require("bootstrap");
+
 
 
 ((core)=>
@@ -100,17 +102,23 @@
             messageAre.removeAttr("class").hide();
           }
         });
+
+         
         
         $("#sendButton").on("click", ()=>{
 
-          let contact = new core.Contact(fullName.value, contactNumber.value, emailAddress.value);
+          if ($("#subscribeCheck")[0].checked) {
+              let contact = new core.Contact(fullName.value, contactNumber.value, emailAddress.value);
 
               if (contact.serialize()) {
-                localStorage.setItem((localStorage.length+1).toString(), contact.serialize());
+                let key = contact.FullName.substring(0,1)+ Date.now();
+                localStorage.setItem(key, contact.serialize());
               }
+            
+          }
 
         });
-        let sendButton = document.getElementById("sendButton");
+        
         sendButton.addEventListener("click", function(event){
             event.preventDefault();
             
@@ -131,32 +139,93 @@
 
         let data = "";
 
-        for (let index = 0; index < localStorage.length; index++) {
+        let keys = Object.keys(localStorage);
+
+        let index = 1;
+
+        for (const key of keys) {
           
-           let contacData = localStorage.getItem((index+1).toString());
+          let contacData = localStorage.getItem(key);
 
            let contact = new core.Contact();
 
            contact.deserialaze(contacData);
 
            data += 
-           `<tr>
-                  <th scope="col">${index+1}</th>
-                  <th scope="col">${contact.FullName}</th>
-                  <th scope="col">${contact.ContactNumber}</th>
-                  <th scope="col">${contact.EmailAddress}</th>
-                </tr>`
-        }
+                  `<tr>
+                  <th scope="col">${index}</th>
+                  <td scope="col">${contact.FullName}</td>
+                  <td scope="col">${contact.ContactNumber}</td>
+                  <td scope="col">${contact.EmailAddress}</td>
+                  <td class= "text-center"><button value = "${key}" class="btn btn-primary btn-sm edit"><i class="fas fa-edit fa-sm"></i>Edit</button></td>
+                  <td class= "text-center"><button value = "${key}" class="btn btn-danger btn-sm delete"><i class="fas fa-trash-alt fa-sm"></i>Delete</button></td>
+                  </tr>`;
+          index++;
+        };
+
         contactList.innerHTML =  data;
+
+
+        $("button.edit").on("click", function(){
+          location.href = "edit.html#" + $(this).val();
+        })
+        $("button.delete").on("click", function(){
+          if (confirm("Do you want to delete it?")) {
+            localStorage.removeItem($(this).val());
+          location.href = "contact-list.html";
+          }
+        })
         
       }
     }
 
+    function displayEdit(){
+
+      let key = location.hash.substring(1);
+
+      let contact = new core.Contact();
+
+      if (key != "") {
+        contact.deserialaze(localStorage.getItem(key))
+      
+
+      $("#fullName").val(contact.FullName);
+      $("#contactNumber").val(contact.ContactNumber);
+      $("#emailAddress").val(contact.EmailAddress);
+
+      }
+
+      $("#editButton").on("click", function(){
+
+          if (key == "") {
+            key = contact.FullName.substring(0,1)+ Date.now();
+          }
+
+          contact.FullName = $("#fullName").val();
+          contact.ContactNumber = $("#contactNumber").val();
+          contact.EmailAddress = $("#emailAddress").val();
+
+          
+
+          localStorage.setItem(key, contact.serialize());
+          location.href = "contact-list.html";
+
+      })
+
+      $("#cancelButton").on("click", function(){
+        location.href = "contact-list.html";
+      })
+
+       
+
+    }
      
 
     function Start()
     {
         console.log("App Started...");
+
+         
 
         switch (document.title) 
         {
@@ -177,6 +246,8 @@
             break;
           case "Contact-List":
             displayContactList();
+            case "Edit":
+            displayEdit();
           break;
         }
         
