@@ -82,16 +82,97 @@
 
     }
 
+    function testFullName(){
+      let messageAre = $("#messageArea").hide();
+
+      let fullNamePatter = /([A-Z][a-z]{1,25})+(\s|,|-)([A-Z][a-z]{1,25})+(\s|,|-)*/;
+
+      // form validation
+
+      $("#fullName").on("blur", function(){
+
+        if(!fullNamePatter.test($(this).val()))
+        {
+            $(this).trigger("focus").trigger("select");
+
+            messageAre.show().addClass("alert alert-danger").text("Please enter an appropriate first Name with Big");
+        }
+        else
+        {
+          messageAre.removeAttr("class").hide();
+        }
+      });
+    }
+
+
+    function testContactNumber(){
+
+      let messageAre = $("#messageArea")
+
+      let contactNumber = /^(\+zd{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
+
+      // form validation
+
+      $("#contactNumber").on("blur", function(){
+
+        if(!contactNumber.test($(this).val()))
+        {
+            $(this).trigger("focus").trigger("select");
+
+            messageAre.show().addClass("alert alert-danger").text("Please enter an appropriate Contact Number");
+        }
+        else
+        {
+          messageAre.removeAttr("class").hide();
+        }
+      });
+    }
+
+    function testEmailAddress(){
+      let messageAre = $("#messageArea")
+
+      let emailCheck = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/;
+
+      // form validation
+
+      $("#emailAddress").on("blur", function(){
+
+        if(!emailCheck.test($(this).val()))
+        {
+            $(this).trigger("focus").trigger("select");
+
+            messageAre.show().addClass("alert alert-danger").text("Please enter an appropriate Email addres");
+        }
+        else
+        {
+          messageAre.removeAttr("class").hide();
+        }
+      });
+    }
+
+    function formValidation(){
+      testFullName();
+      testContactNumber();
+      testEmailAddress();
+    }
+
     function displayContact()
     {
+
+      formValidation();
 
 
         let messageAre = $("#messageArea").hide();
 
+        let fullNamePatter = /([A-Z][a-z]{1,25})+(\s|,|-)([A-Z][a-z]{1,25})+(\s|,|-)*/;
+
         // form validation
 
+        
+
         $("#fullName").on("blur", function(){
-          if($(this).val().length < 2)
+
+          if(!fullNamePatter.test($(this).val()))
           {
               $(this).trigger("focus").trigger("select");
 
@@ -172,8 +253,13 @@
         $("button.delete").on("click", function(){
           if (confirm("Do you want to delete it?")) {
             localStorage.removeItem($(this).val());
-          location.href = "contact-list.html";
+          
           }
+          location.href = "contact-list.html";
+        });
+
+        $("#addButton").on("click", function(){
+          location.href = "edit.html";
         })
         
       }
@@ -194,9 +280,18 @@
       $("#emailAddress").val(contact.EmailAddress);
 
       }
+      else {
+            // Modifie contact list to show different header and button when key is empty
+            if (key == "") {
+              $("main>h1").text("Add contact");
+              $("#editButton").text("Add");
+            }
+      }
 
+      formValidation();
       $("#editButton").on("click", function(){
 
+        if (document.forms[0].checkValidity()) {
           if (key == "") {
             key = contact.FullName.substring(0,1)+ Date.now();
           }
@@ -209,14 +304,26 @@
 
           localStorage.setItem(key, contact.serialize());
           location.href = "contact-list.html";
+          
+        }
+          
 
       })
 
       $("#cancelButton").on("click", function(){
         location.href = "contact-list.html";
-      })
+      });
 
        
+
+    }
+
+    function displayRegister(){
+
+
+    }
+    function displayLogin(){
+
 
     }
      
@@ -248,6 +355,10 @@
             displayContactList();
             case "Edit":
             displayEdit();
+            case "Login":
+            displayLogin();
+            case "Register":
+            displayRegister();
           break;
         }
         
