@@ -68,11 +68,20 @@
      */
     toJSON(){
       return {
-        "fullName": this.FullName,
-        "cotactNumber": this.ContactNumber,
-        "emailAddress": this.EmailAddress
+        "FullName": this.FullName,
+        "CotactNumber": this.ContactNumber,
+        "EmailAddress": this.EmailAddress
       }
-
+    }
+    /**
+     * This metod takes JSON object and assig it to Contact object properties
+     *
+     * @param {Object} data
+     */
+    fromJSON(data){
+      this.FullName = data.FullName;
+      this.ContactNumber = data.ContactNumber;
+      this.EmailAddress = data.EmailAddress;
     }
     /**
      *  This metod convert Contat to comma-separated value string
