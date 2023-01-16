@@ -1,10 +1,10 @@
 "use strict";
 // User Class
 
-
-((core)=>{
-
-  class User {
+((core)=>
+{
+  class User 
+  {
     // getters and setters
     get DisplayName() 
     {
@@ -25,15 +25,17 @@
     {
       this.m_emailAddress = value;
     }
-    get UserName() 
+
+    get Username() 
     {
-      return this.m_userName;
+      return this.m_username;
     }
   
-    set UserName(value) 
+    set Username(value) 
     {
-      this.m_userName = value;
+      this.m_username = value;
     }
+
     get Password() 
     {
       return this.m_password;
@@ -48,85 +50,93 @@
 
     /**
      * Creates an instance of User.
-     * @param {string} [DisplayName=""]
+     * @param {string} [displayName=""]
      * @param {string} [emailAddress=""]
-     * @param {string} [userName=""]
+     * @param {string} [username=""]
      * @param {string} [password=""]
-     * @memberof User
      */
-    constructor(displayName = "", emailAddress = "", userName = "", password = "") 
+    constructor(displayName = "", emailAddress = "", username = "", password="") 
     {
       this.DisplayName = displayName;
       this.EmailAddress = emailAddress;
-      this.UserName = userName;
+      this.Username = username;
       this.Password = password;
     }
 
     // methods
 
     /**
-     * This method overrides the built-in toString method for the Contact class
+     * This method overrides the built-in toString method for the User class
      *
      * @returns {string}
      */
     toString() 
     {
-      return `Display Name     : ${this.DisplayName} \nEmail Address: ${this.EmailAddress}\nUser Name : ${this.UserName}`;
+      return `Display Name     : ${this.DisplayName} \nEmail Address : ${this.EmailAddress} \nUsername : ${this.Username}`;
     }
+
     /**
-     * This metod returns a JSON object made of the properties of the Contact class
+     * This method returns a JSON object made up of the properties of the User class
      *
-     * @return {Object} 
+     * @returns {Object}
      */
-    toJSON(){ 
+    toJSON()
+    {
       return {
         "DisplayName": this.DisplayName,
         "EmailAddress": this.EmailAddress,
-        "UserName": this.UserName
+        "Username": this.Username
       }
     }
+
     /**
-     * This metod takes JSON object and assig it to User object properties
+     * This method takes a JSON data object and assigns the values to the User class properties
      *
      * @param {Object} data
      */
-    fromJSON(data){
+    fromJSON(data)
+    {
       this.DisplayName = data.DisplayName;
       this.EmailAddress = data.EmailAddress;
-      this.UserName = data.UserName;
+      this.Username = data.Username;
       this.Password = data.Password;
     }
+
     /**
-     *  This metod convert User to comma-separated value string
+     * This method converts the User into a comma-separated value string
      *
-     * @return {string} 
+     * @returns {string}
      */
-    serialize(){
-
-      if (this.DisplayName!== "" && this.EmailAddress !== "" && this.UserName !== "") {
-
-      return `${this.DisplayName},${this.EmailAddress},${this.UserName}`; 
+    serialize()
+    {
+      if(this.DisplayName !== "" && this.EmailAddress !== "" && this.Username !== "")
+      {
+        return `${this.DisplayName},${this.EmailAddress},${this.Username}`;
       }
-      else {
-        console.log("One of the properties is empty!");
+      else 
+      {
+        console.error("One or more properties of the User is empty");
         return null;
       }
     }
+
     /**
-     * This method takes a comma-separated data string and assigns the values to the User class paramaters
+     * This method takes a comma-separated data string and assigns the values to the User class properties
      *
      * @param {string} data
      * @return {void}
      */
-    deserialaze(data){
-
+    deserialize(data)
+    {
       let propertyArray = data.split(",");
       this.DisplayName = propertyArray[0];
       this.EmailAddress = propertyArray[1];
-      this.UserName = propertyArray[2];
-
+      this.Username = propertyArray[2];
     }
   }
+
   core.User = User;
 
-})(core || (core = {}));
+})(core || (core={}));
+
+

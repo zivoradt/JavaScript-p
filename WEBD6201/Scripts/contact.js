@@ -1,9 +1,7 @@
 "use strict";
 // Contact Class
 
-
 ((core)=>{
-
   class Contact {
     // getters and setters
     get FullName() 
@@ -61,59 +59,68 @@
     {
       return `Full Name     : ${this.FullName} \nContact Number: ${this.ContactNumber}\nEmail Address : ${this.EmailAddress}`;
     }
+
     /**
-     * This metod returns a JSON object made of the properties of the Contact class
+     * This method returns a JSON object made up of the properties of the Contact class
      *
-     * @return {Object} 
+     * @returns {Object}
      */
-    toJSON(){
+    toJSON()
+    {
       return {
         "FullName": this.FullName,
-        "CotactNumber": this.ContactNumber,
+        "ContactNumber": this.ContactNumber,
         "EmailAddress": this.EmailAddress
       }
     }
+
     /**
-     * This metod takes JSON object and assig it to Contact object properties
+     * This method takes a JSON data object and assigns the values to the Contact class properties
      *
      * @param {Object} data
      */
-    fromJSON(data){
+    fromJSON(data)
+    {
       this.FullName = data.FullName;
       this.ContactNumber = data.ContactNumber;
       this.EmailAddress = data.EmailAddress;
     }
+
     /**
-     *  This metod convert Contat to comma-separated value string
+     * This method converts the Contact into a comma-separated value string
      *
-     * @return {string} 
+     * @returns {string}
      */
-    serialize(){
-
-      if (this.FullName!== "" && this.ContactNumber !== "" && this.EmailAddress !== "") {
-
-      return `${this.FullName},${this.ContactNumber},${this.EmailAddress}`; 
+    serialize()
+    {
+      if(this.FullName !== "" && this.ContactNumber !== "" && this.EmailAddress !== "")
+      {
+        return `${this.FullName},${this.ContactNumber},${this.EmailAddress}`;
       }
-      else {
-        console.log("Contact is empty");
+      else 
+      {
+        console.error("One or more properties of the Contact is empty");
         return null;
       }
     }
+
     /**
-     * This method takes a comma-separated data string and assigns the values to the Contact class paramaters
+     * This method takes a comma-separated data string and assigns the values to the Contact class properties
      *
      * @param {string} data
      * @return {void}
      */
-    deserialaze(data){
-
+    deserialize(data)
+    {
       let propertyArray = data.split(",");
       this.FullName = propertyArray[0];
       this.ContactNumber = propertyArray[1];
       this.EmailAddress = propertyArray[2];
-
     }
   }
+
   core.Contact = Contact;
 
-})(core || (core = {}));
+})(core || (core={}));
+
+

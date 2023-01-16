@@ -1,22 +1,30 @@
 {
-    "contacts": 
+    "contacts":
     [
         {
-            "FullName": "Tony Stark",
-            "ContactNumber": "4165554168",
-            "EmailAddress": "zivoradtrickovic@gmail.com"
-
+            "FullName":"Tony Stark",
+            "ContactNumber":"4165555556",
+            "EmailAddress":"ironman@example.com"
         },
         {
-            "FullName": "Miko Stark",
-            "ContactNumber": "4167774168",
-            "EmailAddress": "zivoradtrickovic@gmail.com"
-
+            "FullName":"Bruce Banner",
+            "ContactNumber":"4165555557",
+            "EmailAddress":"thehulk@example.com"
         },
         {
-            "FullName": "Avengeres",
-            "ContactNumber": "41655354168",
-            "EmailAddress": "zivoradtrickovic@gmail.com"
+            "FullName":"Peter Parker",
+            "ContactNumber":"4165555558",
+            "EmailAddress":"spiderman@example.com"
+        },
+        {
+            "FullName":"Stephen Strange",
+            "ContactNumber":"4165555559",
+            "EmailAddress":"doctorstrange@example.com"
+        },
+        {
+            "FullName":"Reed Richards",
+            "ContactNumber":"4165555550",
+            "EmailAddress":"mrfantastic@example.com"
         }
     ]
 }
