@@ -163,6 +163,7 @@
 
     function displayContactList() 
     {
+      $("#contacListLink").attr("")
       
       if (localStorage.length > 0) 
       {
@@ -334,6 +335,8 @@
 
     }
 
+
+
     function toggleLogin(){
       if(sessionStorage.getItem("user")){
 
@@ -341,13 +344,18 @@
           `<a id = "logout" class="nav-link active" aria-current="page" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>`
         );
 
+
         $("#logout").on("click", function(){
           // Perform logout
           sessionStorage.clear();
 
           // Redirect to login page
           location.href = "login.html"
-        })
+        });
+
+        $(`<li class="nav-item">
+        <a  id= "contactListLink" class="nav-link" aria-current="page" href="contact-list.html"><i class="fas fa-users fa-lg"></i> Contact List</a>
+      </li>`).insertBefore("#login");
       }
     };
 
