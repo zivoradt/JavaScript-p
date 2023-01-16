@@ -1,0 +1,24 @@
+{
+
+    "users":
+    [
+        {
+            "DisplayName": "Zivorad Trickovic",
+            "EmailAddress": "zivoradtrickovic@gmail.com",
+            "Username": "zivorad",
+            "Password": "12345"
+        },
+        {
+            "DisplayName": "Milan Trajkovicc",
+            "EmailAddress": "milannckovic@gmail.com",
+            "Username": "milance",
+            "Password": "458795"
+        },
+        {
+            "DisplayName": "Admin Adminic",
+            "EmailAddress": "admince@gmail.com",
+            "Username": "aaaadimn",
+            "Password": "7778"
+        }
+    ]
+}

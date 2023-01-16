@@ -1,5 +1,5 @@
 {
-    "contact": 
+    "contacts": 
     [
         {
             "FullName": "Tony Stark",
@@ -17,13 +17,6 @@
             "FullName": "Avengeres",
             "ContactNumber": "41655354168",
             "EmailAddress": "zivoradtrickovic@gmail.com"
-
         }
-
     ]
-
-
-
-
-
 }
