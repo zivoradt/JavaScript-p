@@ -42,7 +42,7 @@
      * @return {number} 
      */
     Find(route) {
-      return this.m_routingTable.indexof(route);
+      return this.m_routingTable.indexOf(route);
     }
     /**
      *This method remove a route in the routing table
@@ -83,3 +83,17 @@ router.AddTable([
   "/register",
   "/services",
 ]);
+
+let route = location.pathname;
+if (router.Find(route)> -1) {
+
+    if (route == "/") {
+        router.ActiveLink = "home";
+    }
+    else{
+        router.ActiveLink = route.substring(1);
+    }
+}
+else{
+    router.ActiveLink = "404";
+}

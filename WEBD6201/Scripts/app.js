@@ -16,7 +16,7 @@
     function loadHeader(pageName){
       
       console.log(location.pathname);
-      
+       
       
       // inject the Header
 
@@ -71,7 +71,6 @@
   
     function displayHome()
     {
-      router.ActiveLink = "home";
 
        loadHeader(router.ActiveLink);
        loadContent(router.ActiveLink);
