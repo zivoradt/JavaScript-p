@@ -14,6 +14,10 @@
      * @param {string} pageName
      */
     function loadHeader(pageName){
+      
+      console.log(location.pathname);
+      
+      
       // inject the Header
 
       $.get("/Views/components/header.html", function(data){
@@ -27,12 +31,12 @@
      // content injector
 
       $("a").on("click", function(){
-          $(`#${activeLink}`).removeClass("active"); // removes highliht link
-          activeLink = $(this).attr("id");
-          loadContent(activeLink);  // add content to page
-          $(`#${activeLink}`).addClass("active"); // add highlight link
+          $(`#${router.ActiveLink}`).removeClass("active"); // removes highliht link
+          router.ActiveLink = $(this).attr("id");
+          loadContent(router.ActiveLink);  // add content to page
+          $(`#${router.ActiveLink}`).addClass("active"); // add highlight link
 
-          history.pushState({}, "", activeLink); // this replace URL in browser 
+          history.pushState({}, "", router.ActiveLink); // this replace URL in browser 
       });
 
       // make it look like each nav item as an active link
@@ -67,10 +71,10 @@
   
     function displayHome()
     {
-      activeLink = "home"
+      router.ActiveLink = "home";
 
-       loadHeader(activeLink);
-       loadContent(activeLink);
+       loadHeader(router.ActiveLink);
+       loadContent(router.ActiveLink);
        loadFooter();
         
     }
