@@ -164,7 +164,9 @@
   }
 
   function displayContactList() {
-    $("#contacListLink").attr("");
+
+    authGuard();
+    toggleLogin();
 
     if (localStorage.length > 0) {
       let contactList = document.getElementById("contactList");
@@ -295,6 +297,8 @@
           // hide any error message
           messageArea.removeAttr("class").hide();
 
+          
+
           // redirect user to secure area - contact-list.html
           location.href = "/contact-list";
         } else {
@@ -341,10 +345,21 @@
         `<a id="login"class="nav-link" aria-current="page" ><i class="fas fa-sign-in-alt"></i> Login</a>`
       );
     }
+    $("a").on("mouseover", function () {
+      $(this).css("cursor", "pointer");
+    });
   }
 
   function display404Page(){
 
+  }
+
+  function authGuard(){
+    if(!sessionStorage.getItem("user"))
+    {
+    // redirect to the secure area
+    location.href = "/login";
+    }
   }
 
   function ActiveLinkCallback(ActiveLink) {
@@ -390,7 +405,6 @@
 
     loadFooter();
 
-    toggleLogin();
   }
 
   window.addEventListener("load", Start);
