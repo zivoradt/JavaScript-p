@@ -1,6 +1,6 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-((core) => {
+var core;
+(function (core) {
     class User {
         get DisplayName() {
             return this.m_displayName;

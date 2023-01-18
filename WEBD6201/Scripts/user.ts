@@ -1,11 +1,8 @@
 
 // User Class
-
-import { Obj } from "@popperjs/core/lib";
-
-((core)=>
+namespace core
 {
-  class User 
+  export class User 
   {
     //Instances Variables
 
@@ -144,8 +141,6 @@ import { Obj } from "@popperjs/core/lib";
     }
   }
 
-  core.User = User;
-
-})(core || (core={}));
+}
 
 

@@ -1,8 +1,9 @@
 
 // Contact Class
 
-((core)=>{
-  class Contact {
+namespace core
+{
+  export class Contact {
 
     // Instance variables
 
@@ -127,8 +128,6 @@
     }
   }
 
-  core.Contact = Contact;
-
-})(core || (core={}));
+}
 
 

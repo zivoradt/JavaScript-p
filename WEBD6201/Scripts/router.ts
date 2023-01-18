@@ -1,7 +1,8 @@
 
 
-(function (core) {
-  class Router {
+namespace core
+{
+  export class Router {
     // Instances variables
 
     private m_activeLink: string;
@@ -77,8 +78,8 @@
       return this.m_routingTable.toString();
     }
   }
-  core.Router = Router;
-})(core || (core = {}));
+ 
+}
 
 
 // TODO need to move code into its own file

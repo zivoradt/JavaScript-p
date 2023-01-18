@@ -1,5 +1,6 @@
 "use strict";
-((core) => {
+var core;
+(function (core) {
     class Contact {
         get FullName() {
             return this.m_fullName;
