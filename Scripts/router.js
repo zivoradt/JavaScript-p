@@ -47,7 +47,7 @@ router.AddTable([
     "/services",
 ]);
 let route = location.pathname;
-console.log(route);
+console.log(router);
 if (router.Find(route) > -1) {
     if (route == "/") {
         router.ActiveLink = "home";
