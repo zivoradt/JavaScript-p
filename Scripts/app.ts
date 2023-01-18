@@ -3,6 +3,24 @@
 namespace core {
 
   /**
+   * This metod switches page content relative to the link that is passed into the functon
+   * optionally, link data can be also passed
+   *
+   * @param {string} link
+   * @param {string} [data=""]
+   */
+  function loadLink(link:string, data:string = "" ):void
+  {
+    $(`#${router.ActiveLink}`).removeClass("active"); // removes highliht link
+        router.ActiveLink = link;
+        router.LinkData = data;
+        loadContent(router.ActiveLink, ActiveLinkCallback(router.ActiveLink)); // add content to page
+        $(`#${router.ActiveLink}`).addClass("active"); // add highlight link
+        history.pushState({}, "", router.ActiveLink); // this replace URL in browser
+        
+  };
+
+  /**
    * inject nav bar in header element and highlight active link base on page name
    *
    * @param {string} pageName
@@ -15,6 +33,8 @@ namespace core {
     $.get("./Views/components/header.html", function (data) {
       $("header").html(data); //load navigation bar
 
+      toggleLogin();
+
       //highlight active link
       $(`#${pageName}`).addClass("active");
 
@@ -22,12 +42,7 @@ namespace core {
       // content injector
 
       $("a").on("click", function () {
-        $(`#${router.ActiveLink}`).removeClass("active"); // removes highliht link
-        router.ActiveLink = $(this).attr("id");
-        loadContent(router.ActiveLink, ActiveLinkCallback(router.ActiveLink)); // add content to page
-        $(`#${router.ActiveLink}`).addClass("active"); // add highlight link
-
-        history.pushState({}, "", router.ActiveLink); // this replace URL in browser
+        loadLink($(this).attr("id"));
       });
 
       // make it look like each nav item as an active link
@@ -202,24 +217,26 @@ namespace core {
       contactList.innerHTML = data;
 
       $("button.edit").on("click", function () {
-        location.href = "/edit#" + $(this).val();
+        //TODO this case = link +data
+        loadLink("edit", $(this).val().toString());;
       });
 
       $("button.delete").on("click", function () {
         if (confirm("Are you sure?")) {
           localStorage.removeItem($(this).val().toString());
         }
-        location.href = "/contact-list"; // refresh the page
+        loadLink("contact-list"); // refresh the page
       });
 
       $("#addButton").on("click", function () {
-        location.href = "/edit";
+        loadLink("edit");;
       });
     }
   }
 
   function displayEdit(): void {
-    let key = location.hash.substring(1);
+    let key = router.LinkData;
+    console.log(router.LinkData)
 
     let contact = new core.Contact();
 
@@ -258,12 +275,12 @@ namespace core {
       localStorage.setItem(key, contact.serialize());
 
       // return to the contact list
-      location.href = "/contact-list";
+      loadLink("contact-list");
     });
 
     $("#cancelButton").on("click", function () {
       // return to the contact list
-      location.href = "/contact-list";
+      loadLink("contact-list");
     });
   }
 
@@ -304,7 +321,8 @@ namespace core {
 
 
           // redirect user to secure area - contact-list.html
-          location.href = "/contact-list";
+          loadLink("contact-list");
+
         } else {
           // display an error message
           username.trigger("focus").trigger("select");
@@ -320,7 +338,7 @@ namespace core {
       // clear the login form
       document.forms[0].reset();
       // return to the home page
-      location.href = "/";
+      loadLink("home");
     });
   }
 
@@ -337,7 +355,7 @@ namespace core {
         sessionStorage.clear();
 
         // Redirect to login page
-        location.href = "/login";
+        loadLink("login");
       });
 
       $(`<li class="nav-item">
@@ -361,7 +379,7 @@ namespace core {
   function authGuard(): void {
     if (!sessionStorage.getItem("user")) {
       // redirect to the secure area
-      location.href = "/login";
+      loadLink("login");
     }
   }
   /**
