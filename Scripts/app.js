@@ -3,7 +3,7 @@ var core;
 (function (core) {
     function loadHeader(pageName) {
         console.log(location.pathname);
-        $.get("/Views/components/header.html", function (data) {
+        $.get("./Views/components/header.html", function (data) {
             $("header").html(data);
             $(`#${pageName}`).addClass("active");
             $("a").on("click", function () {
@@ -19,13 +19,13 @@ var core;
         });
     }
     function loadContent(pageName, callback) {
-        $.get(`/Views/content/${pageName}.html`, function (data) {
+        $.get(`./Views/content/${pageName}.html`, function (data) {
             $("main").html(data);
             callback();
         });
     }
     function loadFooter() {
-        $.get("/Views/components/footer.html", function (data) {
+        $.get("./Views/components/footer.html", function (data) {
             $("footer").html(data);
         });
     }
